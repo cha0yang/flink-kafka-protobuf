@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package mmm;
+option java_package = "mmm";
+
+message MsgBatch {
+  int64 Time = 1;
+  repeated Msg Data = 2;
+}
+
+message Msg {
+  string Name = 1;
+  int32 Val = 2;
+}
