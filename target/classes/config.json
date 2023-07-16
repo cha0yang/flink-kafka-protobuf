@@ -1,0 +1,43 @@
+{
+  "fields": [
+    {
+      "path": "$.service",
+      "alias": "service",
+      "type": "grouping"
+    },
+    {
+      "path": "$.count",
+      "alias": "count",
+      "type": "aggregating",
+      "aggregateMethod": "avg"
+    }
+  ],
+  "dbFields": [
+    {
+      "field": "timestamp",
+      "type": "DateTime"
+    },
+    {
+      "field": "service",
+      "type": "LowCardinality(String)"
+    },
+    {
+      "field": "count",
+      "type": "Int64"
+    }
+  ],
+  "db": {
+    "host": "192.168.31.254:8123",
+    "cluster": "company_cluster",
+    "database": "default",
+    "username": "default",
+    "password": "",
+    "ttl": 7,
+    "orderBy": [
+      "service",
+      "-toUnixTimestamp(timestamp)"
+    ],
+    "table": "aggregate"
+  },
+  "windowSeconds": 5
+}
